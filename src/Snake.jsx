@@ -18,7 +18,7 @@ const Snake = () => {
       0,
       gridSize - 1,
       gridSize * gridSize - 1,
-      gridSize * (gridSize - 1)
+      gridSize * (gridSize - 1),
     ];
     for (let i = 0; i < gridSize; i++) {
       leftBorderIndices.push(i * gridSize);
@@ -30,18 +30,20 @@ const Snake = () => {
       leftBorderIndices: leftBorderIndices,
       rightBorderIndices: rightBorderIndices,
       bottomBorderIndices: bottomBorderIndices,
-      cornerIndices: cornerIndices
+      cornerIndices: cornerIndices,
     };
   };
 
-  const [target, setTarget] = useState(() => changeTarget());
+  const [targetLocation, setTargetLocation] = useState(() => changeTarget());
 
   const [borderIndices, setBorderIndices] = useState(() =>
     calculateBorderIndices()
   );
   const [gridSize, setGridSize] = useState(Math.sqrt(BLOCK_SIZE.length));
 
-  const [currentPositionOfSnake, setCurrentPositionOfSnake] = useState(0);
+  const [currentPositionOfSnake, setCurrentPositionOfSnake] = useState(() =>
+    changeTarget()
+  );
 
   const [snakeSize, setSnakeSize] = useState(1);
 
@@ -49,21 +51,24 @@ const Snake = () => {
 
   const [gameOver, setGameOver] = useState(false);
 
-  // snake should autoMove in the last direction input recieved from user
-  // in the begining the snake will always move right
-  const autoMoveSnake = () => {};
+  const [currentDirection, setCurrentDirection] = useState("d");
+
   const currentPositionRef = useRef(currentPositionOfSnake);
 
   useEffect(() => {
     currentPositionRef.current = currentPositionOfSnake;
   }, [currentPositionOfSnake]);
 
-  const moveSnake = (keyCode) => {
-    console.log(
-      currentPositionOfSnake,
-      " value of currentPosition in keyEvent"
-    );
+  // this code is responsible to move the snake auotmatically in last selected direction
+  useEffect(() => {
+    let interval = setInterval(() => {
+      moveSnake(currentDirection);
+    }, [2000]);
+    return () => clearInterval(interval);
+  }, [currentDirection]);
 
+  const moveSnake = (keyCode) => {
+    setCurrentDirection(keyCode);
     if (keyCode === "w") {
       //move up
       checkSnakeBorderCollision(currentPositionRef.current - gridSize, "w");
@@ -79,13 +84,7 @@ const Snake = () => {
     }
   };
 
-  useEffect(() => {
-    console.log(currentPositionOfSnake, "currentPositionOfSnake");
-  }, [currentPositionOfSnake]);
-
   const checkSnakeBorderCollision = (indexToBeChecked, movementDirection) => {
-    console.log(indexToBeChecked, movementDirection, "indexToBeChecked");
-
     if (
       currentPositionRef.current === borderIndices.cornerIndices[0] &&
       (movementDirection === "w" || movementDirection === "a")
@@ -107,17 +106,20 @@ const Snake = () => {
     ) {
       setGameOver(true);
     } else if (
-      borderIndices.topBorderIndices.indexOf(currentPositionRef.current) !== -1 &&
+      borderIndices.topBorderIndices.indexOf(currentPositionRef.current) !==
+        -1 &&
       movementDirection === "w"
     ) {
       setGameOver(true);
     } else if (
-      borderIndices.leftBorderIndices.indexOf(currentPositionRef.current) !== -1 &&
+      borderIndices.leftBorderIndices.indexOf(currentPositionRef.current) !==
+        -1 &&
       movementDirection === "a"
     ) {
       setGameOver(true);
     } else if (
-      borderIndices.rightBorderIndices.indexOf(currentPositionRef.current) !== -1 &&
+      borderIndices.rightBorderIndices.indexOf(currentPositionRef.current) !==
+        -1 &&
       movementDirection === "d"
     ) {
       setGameOver(true);
@@ -130,13 +132,19 @@ const Snake = () => {
     } else setCurrentPositionOfSnake(indexToBeChecked);
   };
 
+
+
   useEffect(() => {
-    "reloaded";
-  });
+    if(currentPositionOfSnake === targetLocation){
+      setScore(prev=>prev+10);
+      setSnakeSize(prev=>prev+1)
+      setTargetLocation(()=>changeTarget());
+    }
+  },[currentPositionOfSnake]);
 
   useEffect(() => {
     // let interval = setInterval(() => {
-    //   //autoMoveSnake();
+    //   moveSnake(currentDirection)
     // }, 2000);
 
     window.addEventListener("keyup", (e) => {
@@ -152,7 +160,7 @@ const Snake = () => {
         return (
           <Block
             key={index}
-            isThisTarget={index === target ? true : false}
+            isThisTarget={index === targetLocation ? true : false}
             isThisSnakeBody={index === currentPositionOfSnake ? true : false}
           >
             {item}

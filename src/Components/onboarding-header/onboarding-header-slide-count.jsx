@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { Container, Text } from "./common-styled-components";
+import { Container, Text } from "../common-styled-components";
 import SliderUI from "./onboarding-header-slider-ui";
 
 const Slider = ({totalSlides,currentSlideCount}) => {

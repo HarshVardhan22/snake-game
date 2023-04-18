@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { Container, Text, SpanText, Button } from "./common-styled-components";
+import { Container, Text, SpanText, Button } from "../common-styled-components";
 
 const CategorySelection = () => {
   return (

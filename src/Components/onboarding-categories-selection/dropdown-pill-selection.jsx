@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import styled from "styled-components";
-import { SpanText } from "./common-styled-components";
+import { SpanText } from "../common-styled-components";
 
 const DropDownWithPillSelection = () => {
   const [selectedItems, setSelectedItems] = useState([]);
@@ -21,9 +21,6 @@ const DropDownWithPillSelection = () => {
     "Option 10",
   ];
 
-  // const handleInputChange = (event) => {
-  //   setInputValue(event.target.value);
-  // };
 
   const handleInputClick = () => {
     setDropdownVisible((prev) => !prev);
@@ -80,12 +77,6 @@ const DropDownWithPillSelection = () => {
             </CrossButton>
           </Pill>
         ))}
-        {/* <input
-              type="text"
-              value={inputValue}
-              onChange={handleInputChange}
-              placeholder={selectedItems.length === 0 ? 'Select an option...' : ''}
-            /> */}
         {dropdownVisible && (
           <CrossButton className="dropdownBtn" type="button" onClick={handleDropdownClose}>
            &#10006;

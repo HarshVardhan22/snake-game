@@ -1,4 +1,4 @@
-import DropDownWithPillSelection from "./Components/dropdown-pill-selection";
+import DropDownWithPillSelection from "./Components/onboarding-categories-selection/dropdown-pill-selection";
 import Snake from "./Snake";
 
 export default function App() {

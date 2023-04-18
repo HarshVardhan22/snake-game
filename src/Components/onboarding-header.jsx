@@ -1,14 +1,16 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 
-import { Container } from './common-styled-components'
+import { Container, Image, Text } from './common-styled-components'
+import Slider from './onboarding-header-slide-count'
 
 const Header = () => {
+  const [currentSlideCount, setCurrentSlideCount] = useState(1);
   return (
     <Container>
-        <Logo src={""}/>
-
-        <Email>Need Help? Email admin@hashcypher.dev</Email>
+        <Image src={""} width={"6.75rem"}/>
+        <Slider totalSlides={3} currentSlideCount={currentSlideCount}/>
+        <Text>Need Help? Email admin@hashcypher.dev</Text>
     </Container>
   )
 }
@@ -27,18 +29,4 @@ const Container = styled.header`
     padding: 2.5rem;
 `
 
-const Logo = styled.img`
-    width: 6.75rem;
-    height: 1rem;
-    object-fit: contain;
-`
-
-const Email = styled.p`
-    font-family: 'sans-serif';
-    font-style: normal;
-    font-weight: 500;
-    font-size: 1rem;
-    line-height: 140%;
-    color: #494E5B;
-`
 

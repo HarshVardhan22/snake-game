@@ -2,13 +2,15 @@ import React from 'react'
 import styled from 'styled-components'
 
 import { Container } from './common-styled-components'
+import Header from './onboarding-header'
 
 const Onboarding = () => {
 
-    const [slideCount, setSlideCount] = useState(1)
-    
     return (
-        <Container>Onboarding</Container>
+        <Container>
+            <Header/>
+            
+        </Container>
     )
 }
 
@@ -16,4 +18,6 @@ export default Onboarding
 
 
 // ******  STYLED COMPONENTS  *******//
+
+
 

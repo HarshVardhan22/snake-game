@@ -32,17 +32,21 @@ export const SpanText = styled.span`
 `;
 export const Button = styled.button`
   display: flex;
+  cursor: pointer;
   justify-content: ${(props) => props.justifyContent ? props.justifyContent : "center"};
   align-items: ${(props) => props.alignItems ? props.alignItems : "center"};
   font-family: ${(props) => props.fontFamily ? props.fontFamily : ""};
-  height: ${(props) => (props.height ? props.height : "1rem")};
+  height: ${(props) => (props.height ? props.height : "auto")};
   margin: ${(props) => (props.margin ? props.margin : "0rem")};
   padding:  ${(props) => (props.padding ? props.padding : "0.5rem 1.5rem")};
   width: ${(props) => (props.width ? props.width : "fit-content")};
-  height: ${(props) => (props.height ? props.height : "100%")};
   color: ${(props) => (props.color ? props.color : "#fff")};
   background:${(props) => (props.background ? props.background : "#000")};
   border-radius: 0.25rem;
+  transition: 0.5s linear;
+  &:active{
+    filter: brightness(150%);
+  }
 `;
 
 export const Image = styled.img`

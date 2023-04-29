@@ -7,7 +7,7 @@ const Slider = ({totalSlides,currentSlideCount}) => {
 
   return (
     <Container flexDirection={"column"}>
-      <Container>
+      <Container padding="0">
         <Text>Steps</Text>
         <SpanText margin="0.5rem" color="#3e3e3e">{currentSlideCount}</SpanText>
         <SpanText color="#3e3e3e">/</SpanText>

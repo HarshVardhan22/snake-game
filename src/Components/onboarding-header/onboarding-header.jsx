@@ -1,14 +1,16 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
 
-import { Container, Image, Text } from '../common-styled-components'
+import {  Image, Text } from '../common-styled-components'
 import Slider from './onboarding-header-slide-count'
+
+import credpostLogo from "../../credpostLogo.png"
 
 const Header = () => {
   const [currentSlideCount, setCurrentSlideCount] = useState(1);
   return (
     <Container>
-        <Image src={""} width={"6.75rem"}/>
+        <Image src={credpostLogo} width={"6.75rem"} height={"auto"}/>
         <Slider totalSlides={3} currentSlideCount={currentSlideCount}/>
         <Text>Need Help? Email admin@hashcypher.dev</Text>
     </Container>
@@ -25,7 +27,7 @@ const Container = styled.header`
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    height: 100%;
+    /* height: 100%; */
     padding: 2.5rem;
 `
 

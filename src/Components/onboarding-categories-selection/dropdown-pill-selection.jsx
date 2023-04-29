@@ -63,8 +63,8 @@ const DropDownWithPillSelection = () => {
   }, [dropdownRef]);
 
   return (
-    <div className="dropdown-input" ref={dropdownRef}>
-      <Container className="input-section" onClick={handleInputClick}>
+    <Wrapper ref={dropdownRef}>
+      <Container onClick={handleInputClick}>
         {selectedItems.length===0 && <SpanText color="#ACACAC">Select up to five</SpanText>}
         {selectedItems.map((item, index) => (
           <Pill key={index}>
@@ -84,7 +84,7 @@ const DropDownWithPillSelection = () => {
         )}
       </Container>
       {dropdownVisible && (
-        <DropDownContainer className="dropdown-list">
+        <DropDownContainer >
           {filteredOptions.map((option, index) => (
             <DropDownItems key={index} onClick={() => handleOptionClick(option)}>
               {option}
@@ -92,11 +92,17 @@ const DropDownWithPillSelection = () => {
           ))}
         </DropDownContainer>
       )}
-    </div>
+    </Wrapper>
   );
 };
 
 export default DropDownWithPillSelection;
+
+const Wrapper = styled.div`
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+`
 
 const Container = styled.div`
   display: flex;
@@ -105,7 +111,6 @@ const Container = styled.div`
   border: 1px solid #eaecf0;
   border-radius: 0.25rem;
   padding: 1rem;
-
   &:active {
     border: 1px solid red;
   }
@@ -135,9 +140,8 @@ const CrossButton = styled.button`
 const DropDownContainer = styled.div`
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    max-height: 10rem;
+    flex-shrink: 0;
+    height: 10rem;
     padding: 0.25rem;
     overflow-y: scroll;
 `

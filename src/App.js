@@ -1,10 +1,10 @@
-import DropDownWithPillSelection from "./Components/onboarding-categories-selection/dropdown-pill-selection";
-import Snake from "./Snake";
+
+import Onboarding from "./Components/Onboarding";
 
 export default function App() {
   return (
     <div className="App">
-    <DropDownWithPillSelection/>
+    <Onboarding/>
     </div>
   );
 }

@@ -9,7 +9,7 @@ const Onboarding = () => {
     return (
         <Container padding="0" width="100%"  height="100vh" flexDirection="column" >
             <Header/>
-            <Container padding=" 5rem 0rem" alignItems="start" background="#eeeeee" width="100%" height="100%">
+            <Container padding=" 5rem 1rem" alignItems="start" background="#eeeeee" width="100%" height="100%">
             <SlideSelector currentSlide={1}/> 
             </Container>
           

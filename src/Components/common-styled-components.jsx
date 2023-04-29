@@ -11,6 +11,7 @@ export const Container = styled.div`
   width: ${(props) => (props.width ? props.width : "fit-content")};
   height: ${(props) => (props.height ? props.height : "100%")};
   background:${(props) => (props.background ? props.background : "#fff")};
+  
 `;
 export const Text = styled.p`
   font-size: ${(props) => (props.fontSize ? props.fontSize : "1rem")};

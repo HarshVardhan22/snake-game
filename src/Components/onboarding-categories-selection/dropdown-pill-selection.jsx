@@ -21,7 +21,6 @@ const DropDownWithPillSelection = () => {
     "Option 10",
   ];
 
-
   const handleInputClick = () => {
     setDropdownVisible((prev) => !prev);
   };
@@ -65,7 +64,9 @@ const DropDownWithPillSelection = () => {
   return (
     <Wrapper ref={dropdownRef}>
       <Container onClick={handleInputClick}>
-        {selectedItems.length===0 && <SpanText color="#ACACAC">Select up to five</SpanText>}
+        {selectedItems.length === 0 && (
+          <SpanText color="#ACACAC">Select up to five</SpanText>
+        )}
         {selectedItems.map((item, index) => (
           <Pill key={index}>
             <SpanText color="#000">{item}</SpanText>
@@ -78,15 +79,23 @@ const DropDownWithPillSelection = () => {
           </Pill>
         ))}
         {dropdownVisible && (
-          <CrossButton className="dropdownBtn" type="button" onClick={handleDropdownClose}>
-           &#10006;
+          <CrossButton
+            className="dropdownBtn"
+            type="button"
+            onClick={handleDropdownClose}
+          >
+            &#10006;
           </CrossButton>
         )}
       </Container>
       {dropdownVisible && (
-        <DropDownContainer >
+        <DropDownContainer>
           {filteredOptions.map((option, index) => (
-            <DropDownItems key={index} onClick={() => handleOptionClick(option)}>
+            <DropDownItems
+              color="#494E5B"
+              key={index}
+              onClick={() => handleOptionClick(option)}
+            >
               {option}
             </DropDownItems>
           ))}
@@ -99,10 +108,11 @@ const DropDownWithPillSelection = () => {
 export default DropDownWithPillSelection;
 
 const Wrapper = styled.div`
+  position: relative;
   display: flex;
   width: 100%;
   flex-direction: column;
-`
+`;
 
 const Container = styled.div`
   display: flex;
@@ -131,33 +141,51 @@ const CrossButton = styled.button`
   font-size: 1rem;
   cursor: pointer;
 
-  &.dropdownBtn{
+  &.dropdownBtn {
     background-color: #fff;
     margin-left: auto;
   }
 `;
 
 const DropDownContainer = styled.div`
-    display: flex;
-    flex-direction: column;
-    flex-shrink: 0;
-    height: 10rem;
-    padding: 0.25rem;
-    overflow-y: scroll;
-`
+  position: absolute;
+  top: 5rem;
+  width: calc(100% - 0.5rem);
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  height: 12rem;
+  padding: 0.25rem;
+  overflow-y: scroll;
+  background: rgba(255, 255, 255);
+  z-index: 2;
+  border: 1px solid #e0e0e0;
+  box-shadow: 0px 44px 114px -20px rgba(126, 129, 140, 0.25);
+  
+  &::-webkit-scrollbar {
+    width: 0.5rem;
+    height: 0.5rem;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 5px;
+  }
+`;
 
 const DropDownItems = styled.li`
-    color: #494E5B;
-    display: flex;
-    align-items: center;
-    width: 100%;
-    padding: 0.5rem;
-    box-sizing: border-box;
-    &:hover{
-        background: #EBDFFF;
+  color: #494e5b;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 0.5rem;
+  box-sizing: border-box;
+  &:hover {
+    background: #ebdfff;
     border-radius: 5px;
-
-    }
-`
-
-
+  }
+`;

@@ -32,12 +32,12 @@ const CategorySelection = ({ onBackButtonClick, onNextButtonClick }) => {
         padding="1.875rem 0"
         height="auto"
       >
-        <Button padding={"0.5rem 1.5rem"} width="45%">
+        <Button padding={"0.5rem 1.5rem"} width="45%" onClick={onBackButtonClick}>
           <SpanText color="#fff" margin="0.125rem 0 0 0.5rem">
             Back
           </SpanText>
         </Button>
-        <Button padding={"0.5rem 1.5rem"} width="45%">
+        <Button padding={"0.5rem 1.5rem"} width="45%" onClick={onNextButtonClick}>
           <SpanText color="#fff" margin="0.125rem 0 0 0.5rem">
             Submit
           </SpanText>

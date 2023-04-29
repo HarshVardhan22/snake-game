@@ -7,7 +7,7 @@ import Slider from "./onboarding-header-slide-count";
 import credpostLogo from "../../credpostLogo.png";
 
 const Header = ({currentSlideCount}) => {
-  
+
   return (
     <Container>
       <FlexBlock justifyContent="start" width="20%" >

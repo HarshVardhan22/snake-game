@@ -7,6 +7,7 @@ const SliderUI = ({totalSlides,currentSlideCount}) => {
       {[...Array(totalSlides)].map((item, index) => {
         return (
           <SliderTab
+            key={index}
             color={index + 1 > currentSlideCount ? "#EAECF0" : "#B07FFE"}
           />
         );

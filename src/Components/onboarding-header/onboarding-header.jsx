@@ -33,8 +33,9 @@ const Container = styled.header`
   justify-content: space-between;
   align-items: center;
   width: 100%;
+  box-sizing: border-box;
   /* height: 100%; */
-  padding: 2.5rem;
+  padding: 1rem;
 `;
 
 const MailLink = styled.a`
